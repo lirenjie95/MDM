@@ -37,3 +37,20 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 }
+
+
+apply plugin: 'checkstyle'
+checkstyle {
+    toolVersion = '8.33'
+    configFile = file("${rootDir}/config/checkstyle/google_checks.xml")
+}
+task Checkstyle(type: Checkstyle) {
+    source 'src/main/java'
+    include '**/*.java'
+    exclude '**/gen/**'
+    exclude '**/R.java'
+    exclude '**/BuildConfig.java'
+
+    // empty classpath
+    classpath = rootProject.files()
+}
