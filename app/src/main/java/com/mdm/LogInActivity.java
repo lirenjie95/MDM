@@ -16,6 +16,7 @@ public class LogInActivity extends AppCompatActivity {
 
   /**
    * Create the sign up page upon entry.
+   * @param savedInstanceState previous saved a bundle of objects.
    */
   @Override
   protected void onCreate(Bundle savedInstanceState) {
