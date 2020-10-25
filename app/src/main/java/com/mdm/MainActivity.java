@@ -7,7 +7,7 @@ public class MainActivity extends AppCompatActivity {
 
   /**
    * A default main activity method.
-   * @param savedInstanceState TODO
+   * @param savedInstanceState previous saved a bundle of objects.
    */
   @Override
   protected void onCreate(Bundle savedInstanceState) {
