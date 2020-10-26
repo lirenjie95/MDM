@@ -31,7 +31,7 @@ public class LogInActivity extends AppCompatActivity {
         String strEmail = email.getText().toString();
         String strPassword = password.getText().toString();
         if (checkInfo(strEmail, strPassword)) {
-          Intent intent = new Intent(LogInActivity.this, MainActivity.class);
+          Intent intent = new Intent(LogInActivity.this, HomePageActivity.class);
           startActivity(intent);
         }
         finish();
