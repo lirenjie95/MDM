@@ -73,12 +73,16 @@ public class SignUpActivity extends AppCompatActivity {
           Toast.LENGTH_LONG).show();
       return false;
     }
+    if (!strPassword.equals(strConfirmPassword)) {
+      Toast.makeText(getApplicationContext(), "Password didn't match.", Toast.LENGTH_LONG).show();
+      return false;
+    }
     // check for the info.
     MdmOpenHelper dbHelper = new MdmOpenHelper(this);
     SQLiteDatabase db = dbHelper.getWritableDatabase();
-    Cursor cursor = db.rawQuery("SELECT * FROM " +
-        dbHelper.USER_INFO_TABLE +
-        "WHERE email = ?",
+    Cursor cursor = db.rawQuery("SELECT * FROM "
+            + dbHelper.USER_INFO_TABLE
+            + "WHERE email = ?",
         new String[]{strEmail});
     if (cursor.getCount() > 0) {
       Toast.makeText(getApplicationContext(),

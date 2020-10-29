@@ -60,9 +60,9 @@ public class LogInActivity extends AppCompatActivity {
     boolean found = true;
     MdmOpenHelper dbHelper = new MdmOpenHelper(this);
     SQLiteDatabase db = dbHelper.getReadableDatabase();
-    Cursor cursor = db.rawQuery("SELECT * FROM " +
-        dbHelper.USER_INFO_TABLE +
-        "WHERE email = ? AND password = ?",
+    Cursor cursor = db.rawQuery("SELECT * FROM "
+            + dbHelper.USER_INFO_TABLE
+            + "WHERE email = ? AND password = ?",
         new String[]{strEmail, strPassword});
     if (cursor.getCount() < 1) {
       Toast.makeText(getApplicationContext(), "Password didn't match.", Toast.LENGTH_LONG).show();

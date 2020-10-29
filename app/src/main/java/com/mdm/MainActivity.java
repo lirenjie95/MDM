@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
+import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
   private Button signUpButton;
@@ -17,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
+    setUpDatabase();
     setContentView(R.layout.activity_main);
     signUpButton = (Button) findViewById(R.id.signUpButton);
     signUpButton.setOnClickListener(new View.OnClickListener() {
@@ -34,5 +36,14 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
       }
     });
+  }
+
+  private void setUpDatabase() {
+    MdmOpenHelper myDbHelper = new MdmOpenHelper(this);
+    try {
+      myDbHelper.createDataBase();
+    } catch (IOException ioe) {
+      throw new Error("Unable to create database");
+    }
   }
 }
