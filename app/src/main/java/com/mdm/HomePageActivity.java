@@ -30,7 +30,7 @@ public class HomePageActivity extends AppCompatActivity {
     packagesButton.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        Intent intent = new Intent(HomePageActivity.this, MailsActivity.class);
+        Intent intent = new Intent(HomePageActivity.this, PackagesActivity.class);
         startActivity(intent);
       }
     });

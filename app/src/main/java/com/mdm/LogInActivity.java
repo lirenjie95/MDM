@@ -1,6 +1,8 @@
 package com.mdm;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -54,7 +56,20 @@ public class LogInActivity extends AppCompatActivity {
       Toast.makeText(getApplicationContext(), "Password can't be null.", Toast.LENGTH_LONG).show();
       return false;
     }
-    //TODO: check the database to find username & password.
-    return true;
+    // try to login
+    boolean found = true;
+    MdmOpenHelper dbHelper = new MdmOpenHelper(this);
+    SQLiteDatabase db = dbHelper.getReadableDatabase();
+    Cursor cursor = db.rawQuery("SELECT * FROM " +
+        dbHelper.USER_INFO_TABLE +
+        "WHERE email = ? AND password = ?",
+        new String[]{strEmail, strPassword});
+    if (cursor.getCount() < 1) {
+      Toast.makeText(getApplicationContext(), "Password didn't match.", Toast.LENGTH_LONG).show();
+      found = false;
+    }
+    cursor.close();
+    db.close();
+    return found;
   }
 }

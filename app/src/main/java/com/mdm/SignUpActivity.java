@@ -1,6 +1,9 @@
 package com.mdm;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -70,10 +73,28 @@ public class SignUpActivity extends AppCompatActivity {
           Toast.LENGTH_LONG).show();
       return false;
     }
-    if (!strPassword.equals(strConfirmPassword)) {
-      Toast.makeText(getApplicationContext(), "Password didn't match.", Toast.LENGTH_LONG).show();
+    // check for the info.
+    MdmOpenHelper dbHelper = new MdmOpenHelper(this);
+    SQLiteDatabase db = dbHelper.getWritableDatabase();
+    Cursor cursor = db.rawQuery("SELECT * FROM " +
+        dbHelper.USER_INFO_TABLE +
+        "WHERE email = ?",
+        new String[]{strEmail});
+    if (cursor.getCount() > 0) {
+      Toast.makeText(getApplicationContext(),
+          "We already have this account. Please go back and login.", Toast.LENGTH_LONG).show();
+      cursor.close();
+      db.close();
       return false;
     }
+    cursor.close();
+    // new user, put those info into database.
+    ContentValues values = new ContentValues();
+    values.put("email", strEmail);
+    values.put("password", strPassword);
+    values.put("address", strAddress);
+    db.insert(dbHelper.USER_INFO_TABLE, null, values);
+    db.close();
     return true;
   }
 }

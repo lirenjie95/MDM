@@ -9,6 +9,9 @@ public class MdmOpenHelper extends SQLiteOpenHelper {
   private static final String TAG = "MdmOpenHelper";
   private static final String DATABASE_NAME = "MDM.db";
   private static final int DATABASE_VERSION = 1;
+  public static final String USER_INFO_TABLE = "UserInfo";
+  public static final String MAILS_TABLE = "Mails";
+  public static final String PACKAGES_TABLE = "Packages";
 
   /**
    * This constructor will generate a SQLiteOpenHelper for our APP.
