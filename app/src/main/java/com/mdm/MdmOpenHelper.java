@@ -12,7 +12,7 @@ public class MdmOpenHelper extends SQLiteOpenHelper {
 
   /**
    * This constructor will generate a SQLiteOpenHelper for our APP.
-   * @param context TODO
+   * @param context Interface to global information about an application environment.
    * @param name The name of database.
    * @param factory In our APP, this part is always null.
    * @param version Database version.
