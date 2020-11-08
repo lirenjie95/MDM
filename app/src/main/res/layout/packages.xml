@@ -9,147 +9,161 @@
         android:id="@+id/Preview"
         android:layout_width="256dp"
         android:layout_height="338dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="224dp"
         android:contentDescription="package Return tag"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.561"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toTopOf="@+id/textView6"
         app:srcCompat="@drawable/shipping_label" />
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="100dp"
-        android:layout_height="40dp"
-        android:background="#DDDDDD"
+        android:layout_width="270dp"
+        android:layout_height="29dp"
         android:gravity="center"
-        android:text="Preview"
+        android:text="Estimated Delivery:04/21/2020"
         android:textAllCaps="false"
-        android:textSize="24sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintHorizontal_bias="0.255"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.17000002" />
+        app:layout_constraintVertical_bias="0.283" />
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="100dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
+        android:layout_width="169dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="12dp"
         android:gravity="center"
-        android:text="04/21/2020"
+        android:text="From Warehouse2"
         android:textAllCaps="false"
-        android:background="#DDDDDD"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView"
-        app:layout_constraintStart_toEndOf="@+id/textView" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="100dp"
-        android:layout_height="40dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
+        android:layout_width="252dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="12dp"
         android:gravity="center"
-        android:text="LAURA'S BOUTIQUE"
+        android:text="9400 1102 0079 3961 8936 91"
         android:textAllCaps="false"
-        android:background="#DDDDDD"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView"
-        app:layout_constraintEnd_toStartOf="@+id/textView" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="100dp"
-        android:layout_height="40dp"
-        android:layout_marginBottom="20dp"
-        android:gravity="center"
-        android:text="Date"
-        android:textAllCaps="false"
+        android:layout_width="117dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="72dp"
+        android:layout_marginEnd="36dp"
         android:background="#DDDDDD"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView2"
-        app:layout_constraintEnd_toEndOf="@+id/textView2" />
+        android:gravity="center"
+        android:text="Processed"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.82"
+        app:layout_constraintStart_toEndOf="@+id/textView5"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView5"
-        android:layout_width="100dp"
-        android:layout_height="40dp"
-        android:layout_marginBottom="20dp"
+        android:layout_width="155dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="72dp"
         android:gravity="center"
-        android:text="From"
-        android:textAllCaps="false"
+        android:text="Tracking number"
         android:background="#DDDDDD"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView3"
-        app:layout_constraintStart_toStartOf="@+id/textView3" />
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="160dp"
+        android:layout_marginBottom="76dp"
         android:text="Schedule Delivery"
-        app:layout_constraintStart_toStartOf="@+id/textView3"
-        app:layout_constraintTop_toTopOf="@+id/mailsButton" />
+        app:layout_constraintBottom_toBottomOf="@+id/nextButton"
+        app:layout_constraintStart_toStartOf="@+id/textView3" />
 
     <Button
         android:id="@+id/mailsButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginBottom="76dp"
         android:text="Pick Up"
-        app:layout_constraintEnd_toEndOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/Preview" />
-
-    <Button
-        android:id="@+id/packagesButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="20dp"
-        android:text="Prev"
-        app:layout_constraintStart_toStartOf="@+id/button"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
-
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginRight="30dp"
-        android:text="Next"
-        app:layout_constraintEnd_toEndOf="@+id/mailsButton"
-        app:layout_constraintTop_toBottomOf="@+id/mailsButton" />
+        app:layout_constraintBottom_toBottomOf="@+id/previousButton"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
+        android:layout_width="157dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="128dp"
         android:text="Packages"
-        android:textSize="36sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView5"
-        app:layout_constraintStart_toStartOf="@+id/textView5" />
+        android:textSize="30sp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/menuButton"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.019" />
 
     <ImageButton
-        android:id="@+id/menuButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_menu"
-        app:layout_constraintBottom_toBottomOf="@+id/textView6"
-        app:layout_constraintEnd_toEndOf="@+id/textView4" />
+        android:id="@+id/nextButton"
+        android:layout_width="80dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="68dp"
+        android:layout_marginBottom="16dp"
+        android:background="@null"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/next" />
+
+    <ImageButton
+        android:id="@+id/previousButton"
+        android:layout_width="80dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginBottom="16dp"
+        android:background="@null"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/previous" />
 
     <ImageButton
         android:id="@+id/returnButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:src="@android:drawable/ic_menu_revert"
-        app:layout_constraintEnd_toEndOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/button4" />
+        android:layout_width="80dp"
+        android:layout_height="60dp"
+        android:background="@null"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/returnbutton" />
+
+    <ImageButton
+        android:id="@+id/menuButton"
+        android:layout_width="80dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="340dp"
+        android:background="@null"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toStartOf="@+id/returnButton"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/menubutton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
