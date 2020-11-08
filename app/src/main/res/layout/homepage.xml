@@ -72,7 +72,7 @@
         android:layout_width="80dp"
         android:layout_height="60dp"
         android:background="@null"
-        android:scaleType="CENTER"
+        android:scaleType="fitXY"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/menubutton" />
@@ -84,7 +84,7 @@
         android:layout_marginStart="4dp"
         android:layout_marginTop="4dp"
         android:background="@null"
-        android:scaleType="CENTER"
+        android:scaleType="fitXY"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/returnbutton" />
@@ -123,8 +123,8 @@
         android:id="@+id/imageView5"
         android:layout_width="120dp"
         android:layout_height="80dp"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2"
         app:srcCompat="@drawable/userhead" />
