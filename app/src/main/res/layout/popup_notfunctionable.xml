@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/imageView7"
+        android:id="@+id/popupImage"
         android:layout_width="0dp"
         android:layout_height="486dp"
         android:layout_marginStart="30dp"
@@ -19,7 +19,7 @@
         app:srcCompat="@drawable/popup" />
 
     <TextView
-        android:id="@+id/textView11"
+        android:id="@+id/notFunctionalText"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="54dp"
@@ -29,17 +29,17 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button16" />
+        app:layout_constraintTop_toBottomOf="@+id/closeButton" />
 
     <Button
-        android:id="@+id/button16"
+        android:id="@+id/closeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="215dp"
-        android:text="Return"
-        app:layout_constraintBottom_toTopOf="@+id/textView11"
+        android:text="Close"
+        app:layout_constraintBottom_toTopOf="@+id/notFunctionalText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

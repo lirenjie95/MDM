@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/textView9"
+        android:id="@+id/infoText"
         android:layout_width="0dp"
         android:layout_height="68dp"
         android:layout_marginStart="65dp"
@@ -15,30 +15,30 @@
         android:text="  Are you sure you want to undo the change?"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView3" />
+        app:layout_constraintTop_toTopOf="@+id/popupImage" />
 
     <Button
-        android:id="@+id/button8"
+        android:id="@+id/confirmButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="28dp"
         android:text="Confirm"
-        app:layout_constraintStart_toStartOf="@+id/textView9"
-        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+        app:layout_constraintStart_toStartOf="@+id/infoText"
+        app:layout_constraintTop_toBottomOf="@+id/infoText" />
 
     <Button
-        android:id="@+id/button9"
+        android:id="@+id/cancelButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         android:layout_marginEnd="20dp"
         android:text="Cancel"
-        app:layout_constraintEnd_toEndOf="@+id/textView9"
-        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+        app:layout_constraintEnd_toEndOf="@+id/infoText"
+        app:layout_constraintTop_toBottomOf="@+id/infoText" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/popupImage"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="30dp"

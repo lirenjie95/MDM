@@ -11,7 +11,7 @@ public class MailsActivity extends AppCompatActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.mails);
+    setContentView(R.layout.mail_list);
     //TODO: complete the whole event design.
   }
 }

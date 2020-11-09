@@ -11,7 +11,7 @@ public class PackagesActivity extends AppCompatActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.packages);
+    setContentView(R.layout.package_list);
     //TODO: complete the whole event design.
   }
 }

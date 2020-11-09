@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/textView10"
+        android:id="@+id/nameText"
         android:layout_width="0dp"
         android:layout_height="31dp"
         android:layout_marginStart="36dp"
@@ -22,8 +22,8 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Anna Lin"
-        app:layout_constraintStart_toStartOf="@+id/textView10"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+        app:layout_constraintStart_toStartOf="@+id/nameText"
+        app:layout_constraintTop_toBottomOf="@+id/nameText" />
 
     <EditText
         android:id="@+id/editTextPhone"
@@ -33,11 +33,11 @@
         android:ems="10"
         android:inputType="phone"
         app:layout_constraintBottom_toTopOf="@+id/editTextTextPostalAddress2"
-        app:layout_constraintStart_toStartOf="@+id/textView12"
+        app:layout_constraintStart_toStartOf="@+id/phoneNumberText"
         tools:text="612-411-4411" />
 
     <TextView
-        android:id="@+id/textView12"
+        android:id="@+id/phoneNumberText"
         android:layout_width="0dp"
         android:layout_height="32dp"
         android:layout_marginStart="3dp"
@@ -46,12 +46,12 @@
         android:layout_marginBottom="45dp"
         android:text="Phone Number "
         app:layout_constraintBottom_toBottomOf="@+id/editTextPhone"
-        app:layout_constraintEnd_toEndOf="@+id/button10"
+        app:layout_constraintEnd_toEndOf="@+id/confirmButton"
         app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
 
     <TextView
-        android:id="@+id/textView13"
+        android:id="@+id/addressText"
         android:layout_width="73dp"
         android:layout_height="31dp"
         android:layout_marginTop="65dp"
@@ -76,7 +76,7 @@
         tools:text="1016 Washington Ave SE, Minneapolis, MN 55414 " />
 
     <Button
-        android:id="@+id/button10"
+        android:id="@+id/confirmButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="39dp"
@@ -86,7 +86,7 @@
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPostalAddress2" />
 
     <Button
-        android:id="@+id/button11"
+        android:id="@+id/cancelButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="33dp"
