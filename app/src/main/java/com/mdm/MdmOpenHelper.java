@@ -1,6 +1,8 @@
 package com.mdm;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
@@ -106,23 +108,150 @@ public class MdmOpenHelper extends SQLiteOpenHelper {
     myInput.close();
   }
 
-  /**
-   * This method will create the original database.
-   * @param db Database.
-   */
   @Override
   public void onCreate(SQLiteDatabase db) {
     Log.e(TAG, "Creating...");
   }
 
-  /**
-   * This method can upgrade the database.
-   * @param db Database.
-   * @param oldVersion The old version of database.
-   * @param newVersion The new version of database.
-   */
   @Override
   public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
     Log.e(TAG, "Upgrading...");
+  }
+
+  /**
+   * Check if we have this user in the database.
+   * @param strEmail the string type email/username
+   * @param strPassword the string type password
+   * @return found this user or not
+   */
+  public boolean findLogin(String strEmail, String strPassword) {
+    boolean found = true;
+    SQLiteDatabase db = this.getReadableDatabase();
+    Cursor cursor = db.rawQuery("SELECT * FROM "
+            + USER_INFO_TABLE
+            + " WHERE email = ? AND password = ?",
+        new String[]{strEmail, strPassword});
+    if (cursor.getCount() < 1) {
+      found = false;
+    }
+    cursor.close();
+    db.close();
+    return found;
+  }
+
+  /**
+   * Add a new user from SignUp.
+   * @param strEmail the string type email/username
+   * @param strPassword the string type password
+   * @param strAddress the string type address
+   * @return if add the new user successfully, return true
+   */
+  public boolean insertNewUser(String strEmail, String strPassword, String strAddress) {
+    SQLiteDatabase db = this.getWritableDatabase();
+    Cursor cursor = db.rawQuery("SELECT * FROM "
+            + USER_INFO_TABLE
+            + " WHERE email = ?",
+        new String[]{strEmail});
+    if (cursor.getCount() > 0) {
+      cursor.close();
+      db.close();
+      return false;
+    }
+    cursor.close();
+    // new user, put those info into database.
+    ContentValues values = new ContentValues();
+    values.put("email", strEmail);
+    values.put("password", strPassword);
+    values.put("address", strAddress);
+    db.insert(USER_INFO_TABLE, null, values);
+    db.close();
+    return true;
+  }
+
+  /**
+   * Get all packages data.
+   * @return a cursor as the result
+   */
+  public Cursor getAllPackages() {
+    SQLiteDatabase db = this.getWritableDatabase();
+    return db.rawQuery("SELECT * FROM " + PACKAGES_TABLE, null);
+  }
+
+  /**
+   * Get all mails data.
+   * @return a cursor as the result
+   */
+  public Cursor getAllSubscribedMails() {
+    SQLiteDatabase db = this.getReadableDatabase();
+    return db.rawQuery("SELECT * FROM " + MAILS_TABLE + " WHERE Unsubscribed = ?",
+        new String[]{"FALSE"});
+  }
+
+  /**
+   * Get all unsubscribed mails data.
+   * @return a cursor as the result
+   */
+  public Cursor getArchive() {
+    SQLiteDatabase db = this.getReadableDatabase();
+    return db.rawQuery("SELECT * FROM " + MAILS_TABLE + " WHERE Archive = ?",
+        new String[]{"TRUE"});
+  }
+
+  /**
+   * Get all addresses of current user.
+   * @param strEmail the email of user
+   * @return a cursor as the result
+   */
+  public Cursor getUserAddress(String strEmail) {
+    SQLiteDatabase db = this.getReadableDatabase();
+    return db.rawQuery("SELECT * FROM " + USER_INFO_TABLE + " WHERE email = ?",
+        new String[]{strEmail});
+  }
+
+  /**
+   * Unsubscribe a mail.
+   * @param mailPhotoId MailPhotoId as the private key
+   */
+  public void unsubscribeMail(String mailPhotoId) {
+    SQLiteDatabase db = this.getWritableDatabase();
+    // find the mail, and then unsubscribe
+    ContentValues values = new ContentValues();
+    values.put("Unsubscribed", "TRUE");
+    db.update(MAILS_TABLE, values, "MailPhotoId = ?", new String[]{mailPhotoId});
+    db.close();
+  }
+
+  /**
+   * Move a mail to archive.
+   * @param mailPhotoId MailPhotoId as the private key
+   */
+  public void archiveMail(String mailPhotoId) {
+    SQLiteDatabase db = this.getWritableDatabase();
+    ContentValues values = new ContentValues();
+    values.put("Archive", "TRUE");
+    db.update(MAILS_TABLE, values, "MailPhotoId = ?", new String[]{mailPhotoId});
+    db.close();
+  }
+
+  /**
+   * Add a new address for current user.
+   * @param strEmail the string type email/username
+   * @param strAddress the string type address
+   */
+  public void addNewAddress(String strEmail, String strAddress) {
+    SQLiteDatabase db = this.getWritableDatabase();
+    Cursor cursor = db.rawQuery("SELECT * FROM "
+            + USER_INFO_TABLE
+            + " WHERE email = ?",
+        new String[]{strEmail});
+    String strPassword = cursor.getString(cursor.getColumnIndex("password"));
+    cursor.close();
+    // new address, put a new record into database.
+    ContentValues values = new ContentValues();
+    values.put("email", strEmail);
+    values.put("password", strPassword);
+    values.put("address", strAddress);
+    db.insert(USER_INFO_TABLE, null, values);
+    db.close();
   }
 }
