@@ -75,7 +75,7 @@ public class MyAddressFragment extends Fragment {
 
   private List<Map<String, String>> getAddressData() {
     List<Map<String, String>> list = new ArrayList<Map<String, String>>();
-    MdmOpenHelper mdmOpenHelper = new MdmOpenHelper(getActivity());
+    MdmOpenHelper mdmOpenHelper = MdmOpenHelper.getInstance(getActivity());
     Cursor cursor = mdmOpenHelper.getUserAddress(strEmail);
     while (cursor.moveToNext()) {
       Map<String, String> map = new HashMap<String, String>();

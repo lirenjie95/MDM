@@ -14,7 +14,6 @@ import com.mdm.R;
 public class LogInActivity extends AppCompatActivity {
   private EditText email;
   private EditText password;
-  private Button logInButton;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +21,7 @@ public class LogInActivity extends AppCompatActivity {
     setContentView(R.layout.login);
     email = (EditText) findViewById(R.id.email);
     password = (EditText) findViewById(R.id.password);
-    logInButton = (Button) findViewById(R.id.logInButton);
+    Button logInButton = (Button) findViewById(R.id.logInButton);
     logInButton.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
@@ -34,6 +33,14 @@ public class LogInActivity extends AppCompatActivity {
           startActivity(intent);
         }
         finish();
+      }
+    });
+    Button forgetPassButton = (Button) findViewById(R.id.forgetPassButton);
+    forgetPassButton.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        Intent intent = new Intent(LogInActivity.this, NotFunctionalActivity.class);
+        startActivity(intent);
       }
     });
   }
@@ -54,7 +61,7 @@ public class LogInActivity extends AppCompatActivity {
       return false;
     }
     // try to login
-    MdmOpenHelper dbHelper = new MdmOpenHelper(this);
+    MdmOpenHelper dbHelper = MdmOpenHelper.getInstance(this);
     boolean found = dbHelper.findLogin(strEmail, strPassword);
     if (!found) {
       Toast.makeText(getApplicationContext(), "Password didn't match.", Toast.LENGTH_LONG).show();

@@ -73,7 +73,7 @@ public class MailsActivity extends AppCompatActivity implements View.OnClickList
       public void onClick(View v) {
         Toast.makeText(context, "Will move to archive.",
             Toast.LENGTH_SHORT).show();
-        MdmOpenHelper mdmOpenHelper = new MdmOpenHelper(context);
+        MdmOpenHelper mdmOpenHelper = MdmOpenHelper.getInstance(context);
         mdmOpenHelper.archiveMail(mailPhotoId);
         finish();
       }
@@ -134,7 +134,7 @@ public class MailsActivity extends AppCompatActivity implements View.OnClickList
           public void onClick(DialogInterface dialog, int which) {
             Toast.makeText(context, "Your subscription is successful.",
                 Toast.LENGTH_SHORT).show();
-            MdmOpenHelper mdmOpenHelper = new MdmOpenHelper(context);
+            MdmOpenHelper mdmOpenHelper = MdmOpenHelper.getInstance(context);
             mdmOpenHelper.unsubscribeMail(mailPhotoId);
             mdmOpenHelper.archiveMail(mailPhotoId);
             finish();

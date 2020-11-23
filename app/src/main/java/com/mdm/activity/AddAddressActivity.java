@@ -35,7 +35,7 @@ public class AddAddressActivity extends AppCompatActivity {
         String strAddress = newAddress.getText().toString();
         Toast.makeText(getApplicationContext(), "New Address has been added.",
             Toast.LENGTH_SHORT).show();
-        MdmOpenHelper dbHelper = new MdmOpenHelper(AddAddressActivity.this);
+        MdmOpenHelper dbHelper = MdmOpenHelper.getInstance(AddAddressActivity.this);
         dbHelper.addNewAddress(email.getText().toString(), strAddress);
         finish();
       }

@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
    * Copy database from assets.
    */
   private void setUpDatabase() {
-    MdmOpenHelper myDbHelper = new MdmOpenHelper(this);
+    MdmOpenHelper myDbHelper = MdmOpenHelper.getInstance(this);
     try {
       myDbHelper.createDataBase();
     } catch (IOException ioe) {

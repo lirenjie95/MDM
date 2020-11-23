@@ -72,7 +72,7 @@ public class SignUpActivity extends AppCompatActivity {
       return false;
     }
     // check for the info.
-    MdmOpenHelper dbHelper = new MdmOpenHelper(this);
+    MdmOpenHelper dbHelper = MdmOpenHelper.getInstance(this);
     boolean success = dbHelper.insertNewUser(strEmail, strPassword, strAddress);
     if (!success) {
       Toast.makeText(getApplicationContext(),

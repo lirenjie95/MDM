@@ -45,7 +45,7 @@ public class ArchiveFragment extends Fragment {
 
   private List<Map<String, String>> getMailsData() {
     List<Map<String, String>> list = new ArrayList<Map<String, String>>();
-    MdmOpenHelper mdmOpenHelper = new MdmOpenHelper(getActivity());
+    MdmOpenHelper mdmOpenHelper = MdmOpenHelper.getInstance(getActivity());
     Cursor cursor = mdmOpenHelper.getArchive();
     while (cursor.moveToNext()) {
       Map<String, String> map = new HashMap<String, String>();

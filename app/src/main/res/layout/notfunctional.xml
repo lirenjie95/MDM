@@ -22,10 +22,10 @@
         android:id="@+id/notFunctionalText"
         android:layout_width="303dp"
         android:layout_height="80dp"
-        android:layout_marginStart="54dp"
-        android:layout_marginBottom="372dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="144dp"
         android:text="Our team are still working on this page, sorry for the inconvenience"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="@id/popupImage"
+        app:layout_constraintTop_toTopOf="@id/popupImage" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

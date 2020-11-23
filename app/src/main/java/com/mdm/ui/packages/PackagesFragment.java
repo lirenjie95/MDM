@@ -45,7 +45,7 @@ public class PackagesFragment extends Fragment {
 
   private List<Map<String, String>> getPackagesData() {
     List<Map<String, String>> list = new ArrayList<Map<String, String>>();
-    MdmOpenHelper mdmOpenHelper = new MdmOpenHelper(getActivity());
+    MdmOpenHelper mdmOpenHelper = MdmOpenHelper.getInstance(getActivity());
     Cursor cursor = mdmOpenHelper.getAllPackages();
     while (cursor.moveToNext()) {
       Map<String, String> map = new HashMap<String, String>();

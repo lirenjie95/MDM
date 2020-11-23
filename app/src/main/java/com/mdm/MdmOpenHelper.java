@@ -16,35 +16,40 @@ import java.io.OutputStream;
 
 public class MdmOpenHelper extends SQLiteOpenHelper {
   private static final String TAG = "MdmOpenHelper";
+  private static MdmOpenHelper instance;
   private final Context context;
   private static final String DATABASE_NAME = "MDM.db";
-  private static final String DATABASE_PATH = "/data"
-      + Environment.getDataDirectory().getAbsolutePath() + "/"
-      + "com.mdm" + "/databases";
-  private static final int DATABASE_VERSION = 1;
+  private static String DATABASE_PATH;
+  private static final int DATABASE_VERSION = 2;
   public static final String USER_INFO_TABLE = "UserInfo";
   public static final String MAILS_TABLE = "Mails";
   public static final String PACKAGES_TABLE = "Packages";
 
   /**
    * This constructor will generate a SQLiteOpenHelper for our APP.
+   * The type is private to fit the singleton pattern.
    * @param context Interface to global information about an application environment.
    * @param name The name of database.
    * @param factory In our APP, this part is always null.
    * @param version Database version.
    */
-  public MdmOpenHelper(Context context, String name,
+  private MdmOpenHelper(Context context, String name,
                        SQLiteDatabase.CursorFactory factory, int version) {
     super(context, name, factory, version);
     this.context = context;
+    DATABASE_PATH = this.context.getDatabasePath(name).getPath();
   }
 
   /**
    * This constructor will provide a way to create MdmOpenHelper only with context.
    * @param context Only this argument is not null. Others can be found in previous section.
+   * @return the MdmOpenHelper instance for all callers.
    */
-  public MdmOpenHelper(Context context) {
-    this(context, DATABASE_NAME, null, DATABASE_VERSION);
+  public static synchronized MdmOpenHelper getInstance(Context context) {
+    if (instance == null) {
+      instance = new MdmOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION);
+    }
+    return instance;
   }
 
   /**
@@ -72,11 +77,10 @@ public class MdmOpenHelper extends SQLiteOpenHelper {
   private boolean checkDataBase() {
     SQLiteDatabase checkDb = null;
     try {
-      String myPath = DATABASE_PATH + DATABASE_NAME;
+      String myPath = DATABASE_PATH;
       checkDb = SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READONLY);
     } catch (SQLiteException e) {
       Log.e(TAG, "checkDataBase: doesn't exist error.");
-      throw new SQLException("database does't exist yet.");
     }
     if (checkDb != null) {
       checkDb.close();
@@ -93,7 +97,7 @@ public class MdmOpenHelper extends SQLiteOpenHelper {
     //Open your local db as the input stream
     InputStream myInput = context.getAssets().open(DATABASE_NAME);
     // Path to the just created empty db
-    String outFileName = DATABASE_PATH + DATABASE_NAME;
+    String outFileName = DATABASE_PATH;
     //Open the empty db as the output stream
     OutputStream myOutput = new FileOutputStream(outFileName);
     //transfer bytes from the input file to the output file
