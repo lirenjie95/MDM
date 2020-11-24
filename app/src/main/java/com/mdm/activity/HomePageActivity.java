@@ -41,7 +41,7 @@ public class HomePageActivity extends AppCompatActivity
     switch (checkedId) {
       case R.id.rbMails:
         if (mailsFragment == null) {
-          mailsFragment = new MailsFragment();;
+          mailsFragment = new MailsFragment();
           fmTransaction.add(R.id.ly_content, mailsFragment);
         } else {
           fmTransaction.show(mailsFragment);
@@ -52,7 +52,7 @@ public class HomePageActivity extends AppCompatActivity
           packagesFragment = new PackagesFragment();
           fmTransaction.add(R.id.ly_content, packagesFragment);
         } else {
-          fmTransaction.show(mailsFragment);
+          fmTransaction.show(packagesFragment);
         }
         break;
       case R.id.rbAddress:

@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import com.mdm.MdmOpenHelper;
 import com.mdm.R;
@@ -23,7 +23,7 @@ public class ArchiveFragment extends Fragment {
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
                            Bundle savedInstanceState) {
-    View view = inflater.inflate(R.layout.fragment_mails, container, false);
+    View view = inflater.inflate(R.layout.fragment_archive, container, false);
     archiveListView = (ListView) view.findViewById(R.id.archive_list);
     List<Map<String, String>> archiveDataList = getMailsData();
     archiveListView.setAdapter(new ArchiveViewAdapter(getActivity(), archiveDataList));
@@ -33,7 +33,7 @@ public class ArchiveFragment extends Fragment {
   @Override
   public void onActivityCreated(Bundle savedInstanceState) {
     super.onActivityCreated(savedInstanceState);
-    Button menuButton = getActivity().findViewById(R.id.menuButton);
+    ImageButton menuButton = getActivity().findViewById(R.id.menuButton);
     menuButton.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
@@ -41,6 +41,13 @@ public class ArchiveFragment extends Fragment {
         startActivity(intent);
       }
     });
+  }
+
+  @Override
+  public void onResume() {
+    super.onResume();
+    List<Map<String, String>> archiveDataList = getMailsData();
+    archiveListView.setAdapter(new ArchiveViewAdapter(getActivity(), archiveDataList));
   }
 
   private List<Map<String, String>> getMailsData() {

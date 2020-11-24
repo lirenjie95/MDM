@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import com.mdm.MdmOpenHelper;
 import com.mdm.R;
@@ -33,7 +33,7 @@ public class MailsFragment extends Fragment {
   @Override
   public void onActivityCreated(Bundle savedInstanceState) {
     super.onActivityCreated(savedInstanceState);
-    Button menuButton = getActivity().findViewById(R.id.menuButton);
+    ImageButton menuButton = getActivity().findViewById(R.id.menuButton);
     menuButton.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
@@ -41,6 +41,13 @@ public class MailsFragment extends Fragment {
         startActivity(intent);
       }
     });
+  }
+
+  @Override
+  public void onResume() {
+    super.onResume();
+    List<Map<String, String>> mailsDataList = getMailsData();
+    mailsListView.setAdapter(new MailsViewAdapter(getActivity(), mailsDataList));
   }
 
   private List<Map<String, String>> getMailsData() {

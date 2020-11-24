@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import com.mdm.MdmOpenHelper;
 import com.mdm.R;
@@ -33,7 +34,7 @@ public class PackagesFragment extends Fragment {
   @Override
   public void onActivityCreated(Bundle savedInstanceState) {
     super.onActivityCreated(savedInstanceState);
-    Button menuButton = getActivity().findViewById(R.id.menuButton);
+    ImageButton menuButton = getActivity().findViewById(R.id.menuButton);
     menuButton.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {

@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.mdm.MdmOpenHelper;
@@ -27,12 +28,12 @@ public class MyAddressFragment extends Fragment {
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
                            Bundle savedInstanceState) {
     View view = inflater.inflate(R.layout.fragment_address, container, false);
-    addressListView = (ListView) view.findViewById(R.id.address_list);
-    List<Map<String, String>> addressDataList = getAddressData();
-    addressListView.setAdapter(new MyAddressViewAdapter(getActivity(), addressDataList));
     if (getArguments() != null) {
       strEmail = getArguments().getString("email");
     }
+    addressListView = (ListView) view.findViewById(R.id.address_list);
+    List<Map<String, String>> addressDataList = getAddressData();
+    addressListView.setAdapter(new MyAddressViewAdapter(getActivity(), addressDataList));
     return view;
   }
 
@@ -52,7 +53,7 @@ public class MyAddressFragment extends Fragment {
   @Override
   public void onActivityCreated(Bundle savedInstanceState) {
     super.onActivityCreated(savedInstanceState);
-    Button menuButton = getActivity().findViewById(R.id.menuButton);
+    ImageButton menuButton = getActivity().findViewById(R.id.menuButton);
     menuButton.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
@@ -71,6 +72,13 @@ public class MyAddressFragment extends Fragment {
         startActivity(intent);
       }
     });
+  }
+
+  @Override
+  public void onResume() {
+    super.onResume();
+    List<Map<String, String>> addressDataList = getAddressData();
+    addressListView.setAdapter(new MyAddressViewAdapter(getActivity(), addressDataList));
   }
 
   private List<Map<String, String>> getAddressData() {

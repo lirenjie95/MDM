@@ -3,11 +3,9 @@ package com.mdm;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.os.Environment;
 import android.util.Log;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -20,7 +18,7 @@ public class MdmOpenHelper extends SQLiteOpenHelper {
   private final Context context;
   private static final String DATABASE_NAME = "MDM.db";
   private static String DATABASE_PATH;
-  private static final int DATABASE_VERSION = 2;
+  private static final int DATABASE_VERSION = 1;
   public static final String USER_INFO_TABLE = "UserInfo";
   public static final String MAILS_TABLE = "Mails";
   public static final String PACKAGES_TABLE = "Packages";
@@ -38,6 +36,7 @@ public class MdmOpenHelper extends SQLiteOpenHelper {
     super(context, name, factory, version);
     this.context = context;
     DATABASE_PATH = this.context.getDatabasePath(name).getPath();
+    Log.e(TAG, "Database path is:" + DATABASE_PATH);
   }
 
   /**
@@ -188,7 +187,7 @@ public class MdmOpenHelper extends SQLiteOpenHelper {
   public Cursor getAllSubscribedMails() {
     SQLiteDatabase db = this.getReadableDatabase();
     return db.rawQuery("SELECT * FROM " + MAILS_TABLE + " WHERE Unsubscribed = ?",
-        new String[]{"FALSE"});
+        new String[]{"F"});
   }
 
   /**
@@ -198,7 +197,7 @@ public class MdmOpenHelper extends SQLiteOpenHelper {
   public Cursor getArchive() {
     SQLiteDatabase db = this.getReadableDatabase();
     return db.rawQuery("SELECT * FROM " + MAILS_TABLE + " WHERE Archive = ?",
-        new String[]{"TRUE"});
+        new String[]{"T"});
   }
 
   /**
@@ -220,7 +219,7 @@ public class MdmOpenHelper extends SQLiteOpenHelper {
     SQLiteDatabase db = this.getWritableDatabase();
     // find the mail, and then unsubscribe
     ContentValues values = new ContentValues();
-    values.put("Unsubscribed", "TRUE");
+    values.put("Unsubscribed", "T");
     db.update(MAILS_TABLE, values, "MailPhotoId = ?", new String[]{mailPhotoId});
     db.close();
   }
@@ -232,7 +231,7 @@ public class MdmOpenHelper extends SQLiteOpenHelper {
   public void archiveMail(String mailPhotoId) {
     SQLiteDatabase db = this.getWritableDatabase();
     ContentValues values = new ContentValues();
-    values.put("Archive", "TRUE");
+    values.put("Archive", "T");
     db.update(MAILS_TABLE, values, "MailPhotoId = ?", new String[]{mailPhotoId});
     db.close();
   }
@@ -248,7 +247,10 @@ public class MdmOpenHelper extends SQLiteOpenHelper {
             + USER_INFO_TABLE
             + " WHERE email = ?",
         new String[]{strEmail});
-    String strPassword = cursor.getString(cursor.getColumnIndex("password"));
+    String strPassword = null;
+    while (cursor.moveToNext()) {
+      strPassword = cursor.getString(cursor.getColumnIndex("password"));
+    }
     cursor.close();
     // new address, put a new record into database.
     ContentValues values = new ContentValues();
