@@ -34,7 +34,7 @@ public class PackagesFragment extends Fragment {
   @Override
   public void onActivityCreated(Bundle savedInstanceState) {
     super.onActivityCreated(savedInstanceState);
-    ImageButton menuButton = getActivity().findViewById(R.id.menuButton);
+    ImageButton menuButton = getActivity().findViewById(R.id.menuButton1);
     menuButton.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
