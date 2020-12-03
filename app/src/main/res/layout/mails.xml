@@ -11,84 +11,81 @@
         android:id="@+id/mailImageView"
         android:layout_width="340dp"
         android:layout_height="240dp"
-        android:layout_marginStart="12dp"
+        android:layout_marginStart="4dp"
         android:layout_marginTop="64dp"
         app:layout_constraintStart_toStartOf="@+id/unsubscribeButton"
-        app:layout_constraintTop_toBottomOf="@+id/mailFromInfo"/>
+        app:layout_constraintTop_toBottomOf="@+id/mailFromInfo" />
 
     <TextView
         android:id="@+id/fromTitle"
-        android:layout_width="100dp"
+        android:layout_width="150dp"
         android:layout_height="30dp"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="164dp"
+        android:layout_marginEnd="30dp"
         android:background="#DDDDDD"
         android:gravity="center"
         android:text="From"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@+id/mailFromInfo"
+        app:layout_constraintEnd_toStartOf="@+id/mailFromInfo" />
 
     <TextView
         android:id="@+id/mailFromInfo"
-        android:layout_width="100dp"
+        android:layout_width="150dp"
         android:layout_height="30dp"
         android:background="#DDDDDD"
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.569"
+        app:layout_constraintHorizontal_bias="0.877"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.238" />
+        app:layout_constraintVertical_bias="0.231" />
 
     <Button
         android:id="@+id/unsubscribeButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
         android:layout_marginEnd="44dp"
         android:text="Unsubscribe"
         app:backgroundTint="#F44336"
         app:layout_constraintBottom_toBottomOf="@+id/keepReceiveButton"
         app:layout_constraintEnd_toStartOf="@+id/keepReceiveButton"
         app:layout_constraintTop_toTopOf="@+id/keepReceiveButton"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/mailStatusInfo"
-        android:layout_width="100dp"
+        android:layout_width="150dp"
         android:layout_height="30dp"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginBottom="30dp"
         android:background="#DDDDDD"
         android:gravity="center"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/returnButton" />
+        app:layout_constraintBottom_toTopOf="@+id/mailFromInfo"
+        app:layout_constraintEnd_toEndOf="@+id/mailFromInfo" />
 
     <TextView
         android:id="@+id/mailCateInfo"
-        android:layout_width="100dp"
+        android:layout_width="150dp"
         android:layout_height="30dp"
-        android:layout_marginStart="56dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="30dp"
         android:background="#DDDDDD"
         android:gravity="center"
         app:layout_constraintBottom_toTopOf="@+id/fromTitle"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toStartOf="@+id/mailStatusInfo" />
 
     <Button
         android:id="@+id/keepReceiveButton"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
         android:layout_marginTop="36dp"
-        android:layout_marginEnd="52dp"
-        android:layout_marginRight="52dp"
+        android:layout_marginEnd="30dp"
         android:text="Keep Receive"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mailImageView" />
 
     <ImageButton
         android:id="@+id/returnButton"
-        android:layout_width="80dp"
+        android:layout_width="60dp"
         android:layout_height="60dp"
         android:background="@null"
         android:scaleType="fitXY"
@@ -98,7 +95,7 @@
 
     <ImageButton
         android:id="@+id/menuButton"
-        android:layout_width="80dp"
+        android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginEnd="4dp"
         android:background="@null"
@@ -109,9 +106,9 @@
 
     <ImageButton
         android:id="@+id/nextButton"
-        android:layout_width="80dp"
+        android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_marginEnd="84dp"
+        android:layout_marginEnd="68dp"
         android:layout_marginBottom="36dp"
         android:background="@null"
         android:scaleType="fitXY"
@@ -121,9 +118,9 @@
 
     <ImageButton
         android:id="@+id/previousButton"
-        android:layout_width="80dp"
+        android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_marginStart="64dp"
+        android:layout_marginStart="68dp"
         android:layout_marginBottom="36dp"
         android:background="@null"
         android:scaleType="fitXY"
@@ -149,12 +146,12 @@
         android:layout_height="29dp"
         android:gravity="center"
         android:textAllCaps="false"
-        android:textSize="18sp"
+        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.375"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.303" />
+        app:layout_constraintVertical_bias="0.307" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
